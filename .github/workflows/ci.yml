@@ -1,0 +1,26 @@
+name: build
+on: [push]
+
+jobs:
+  build:
+
+    name: ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install GTest
+        run: sudo apt-get install libgtest-dev -y && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && cd lib && sudo cp *.a /usr/lib
+
+      - name: Build
+        run: mkdir build && cd build && cmake .. && make
+
+      - name: Static Analis and Linters
+        run: ./linters/run.sh
+
+      - name: Tests
+        run: mkdir runtests && cd runtests && cmake .. && make && ./runTests
+
+      - name: Valgrind
+        run: sudo apt-get update && sudo apt-get install -y valgrind && mkdir valgrind_tests && cd valgrind_tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full ./runTests
