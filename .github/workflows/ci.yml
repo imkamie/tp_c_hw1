@@ -23,7 +23,7 @@ jobs:
         run: mkdir runtests && cd runtests && cmake .. && make && ./runTests
 
       - name: Valgrind
-        run: apt-get update && apt-get install -y valgrind && mkdir tests && cd tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full ./runTetsts
+        run: apt-get update && apt-get install -y valgrind && mkdir valgrind_tests && cd valgrind_tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full ./runTetsts
 
 #      - name: Code Coverage
 #        run:
