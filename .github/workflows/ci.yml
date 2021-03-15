@@ -20,7 +20,7 @@ jobs:
         run: ./linters/run.sh
 
       - name: Tests
-        run: mkdir tests && cd tests && cmake .. && make && ./runTests
+        run: mkdir runtests && cd runtests && cmake .. && make && ./runTests
 
       - name: Valgrind
         run: apt-get update && apt-get install -y valgrind && mkdir tests && cd tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full ./runTetsts
