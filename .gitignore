@@ -3,7 +3,6 @@ CMakeFiles/
 Testing/
 cmake-build-debug/
 code_coverage/
-linters/
 
 # Prerequisites
 *.d
