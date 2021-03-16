@@ -13,7 +13,7 @@ void print_data(const data_of_array_t* data_of_arr) {
 data_t* resize(data_of_array_t* data_of_arr)  {
     int new_capacity = data_of_arr->capacity * 2;
 
-    data_t* new_array = (data_t*) calloc(new_capacity, sizeof(data_t));
+    data_t* new_array = calloc(new_capacity, sizeof(data_t));
     if (!new_array) {
         free(new_array);
         return NULL;
@@ -29,6 +29,9 @@ data_t* resize(data_of_array_t* data_of_arr)  {
 void push(data_of_array_t* data_of_arr, data_t data) {
     if (data_of_arr->size >= data_of_arr->capacity) {
         data_of_arr->array = resize(data_of_arr);
+        if (!data_of_arr->array) {
+            return;
+        }
     }
     int current_size = data_of_arr->size;
     data_of_arr->array[current_size] = data;
@@ -56,7 +59,7 @@ void filling_structure(data_t* data) {
     }
 }
 
-void sorting_data(data_of_array_t* data_of_arr) {
+void sort_data(data_of_array_t* data_of_arr) {
     for (int i = 1; i < data_of_arr->size; ++i) {
         data_t temp_data = data_of_arr->array[i];
         int temp_code = data_of_arr->array[i].code;
@@ -68,8 +71,8 @@ void sorting_data(data_of_array_t* data_of_arr) {
     }
 }
 
-int allocate_memory_for_array_of_structure(data_of_array_t* data_of_arr) {
-    data_t* new_array = (data_t*) calloc(1, sizeof(data_t));
+int allocate_memory_for_array(data_of_array_t* data_of_arr) {
+    data_t* new_array = calloc(1, sizeof(data_t));
     if (!new_array) {
         free(new_array);
         return 1;

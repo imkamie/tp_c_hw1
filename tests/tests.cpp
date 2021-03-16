@@ -6,7 +6,7 @@ extern "C" {
 
 TEST(TestAllocateMemory, TestAllocation) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     EXPECT_EQ(status, 0);
     EXPECT_EQ(data_of_arr.capacity, 1);
@@ -26,7 +26,7 @@ TEST(TestArray, CheckValues) {
 
 TEST(TestPush, ChackValues1) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data = {8, 7654321, "NewName"};
     push(&data_of_arr, temp_data);
@@ -44,7 +44,7 @@ TEST(TestPush, ChackValues1) {
 
 TEST(TestPush, ChackValues2) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data1 = {8, 7654321, "FirstName"};
     push(&data_of_arr, temp_data1);
@@ -69,7 +69,7 @@ TEST(TestPush, ChackValues2) {
 
 TEST(TestPush, ChackValues3) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data1 = {8, 7654321, "FirstName"};
     push(&data_of_arr, temp_data1);
@@ -101,7 +101,7 @@ TEST(TestPush, ChackValues3) {
 
 TEST(TestResize, Resize1) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_of_arr.array = resize(&data_of_arr);
 
@@ -113,7 +113,7 @@ TEST(TestResize, Resize1) {
 
 TEST(TestResize, Resize2) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_of_arr.array = resize(&data_of_arr);
     data_of_arr.array = resize(&data_of_arr);
@@ -126,7 +126,7 @@ TEST(TestResize, Resize2) {
 
 TEST(TestSorting, SortTwoStrucures) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data1 = {8, 7654321, "FirstName"};
     push(&data_of_arr, temp_data1);
@@ -134,7 +134,7 @@ TEST(TestSorting, SortTwoStrucures) {
     data_t temp_data2 = {7, 1234567, "SecondName"};
     push(&data_of_arr, temp_data2);
 
-    sorting_data(&data_of_arr);
+    sort_data(&data_of_arr);
 
     EXPECT_EQ(status, 0);
     EXPECT_EQ(data_of_arr.capacity, 2);
@@ -153,7 +153,7 @@ TEST(TestSorting, SortTwoStrucures) {
 
 TEST(TestSorting, SortFiveStrucures) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data1 = {8, 7654321, "FirstName"};
     push(&data_of_arr, temp_data1);
@@ -170,7 +170,7 @@ TEST(TestSorting, SortFiveStrucures) {
     data_t temp_data5 = {3, 26374853, "FifthName"};
     push(&data_of_arr, temp_data5);
 
-    sorting_data(&data_of_arr);
+    sort_data(&data_of_arr);
 
     EXPECT_EQ(status, 0);
     EXPECT_EQ(data_of_arr.capacity, 8);
@@ -201,7 +201,7 @@ TEST(TestSorting, SortFiveStrucures) {
 
 TEST(TestSorting, SortStrucuresWithEqualCode) {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
 
     data_t temp_data1 = {7, 7654321, "FirstName"};
     push(&data_of_arr, temp_data1);
@@ -212,7 +212,7 @@ TEST(TestSorting, SortStrucuresWithEqualCode) {
     data_t temp_data3 = {7, 4235234, "ThirdName"};
     push(&data_of_arr, temp_data3);
 
-    sorting_data(&data_of_arr);
+    sort_data(&data_of_arr);
 
     EXPECT_EQ(status, 0);
     EXPECT_EQ(data_of_arr.capacity, 4);

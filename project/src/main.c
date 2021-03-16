@@ -4,7 +4,7 @@
 
 int main() {
     data_of_array_t data_of_arr;
-    int status = allocate_memory_for_array_of_structure(&data_of_arr);
+    int status = allocate_memory_for_array(&data_of_arr);
     if (status != 0) {
         free(data_of_arr.array);
         return 1;
@@ -29,7 +29,7 @@ int main() {
                     printf("Данных нет.\n");
                     break;
                 }
-                sorting_data(&data_of_arr);
+                sort_data(&data_of_arr);
                 print_data(&data_of_arr);
                 break;
             default:
@@ -37,7 +37,7 @@ int main() {
                 asking_for_continue();
                 break;
         }
-    } while (asking_for_continue() == 1);
+    } while (asking_for_continue());
 
     free(data_of_arr.array);
 

@@ -1,10 +1,12 @@
 #ifndef PROJECT_INCLUDE_UTILS_H_
 #define PROJECT_INCLUDE_UTILS_H_
 
+#define NAME_MAX_LENGTH 20
+
 typedef struct data {
     int code;
     int phone;
-    char name[20];
+    char name[NAME_MAX_LENGTH];
 } data_t;
 
 typedef struct data_of_arr {
@@ -15,8 +17,8 @@ typedef struct data_of_arr {
 
 data_t* resize(data_of_array_t* arr);
 void push(data_of_array_t* arr, data_t data);
-void sorting_data(data_of_array_t* data_of_arr);
-int allocate_memory_for_array_of_structure(data_of_array_t *data_of_arr);
+void sort_data(data_of_array_t* data_of_arr);
+int allocate_memory_for_array(data_of_array_t *data_of_arr);
 void print_data(const data_of_array_t * data_of_arr);
 void filling_structure(data_t* data);
 int asking_for_continue();
