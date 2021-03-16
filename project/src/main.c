@@ -2,12 +2,18 @@
 #include <stdlib.h>
 #include "utils.h"
 
+#define SUCCESSFUL_ALLOCATION 0
+#define ALLOCATION_FAILED 1
+#define INITIAL_SIZE 0
+#define ENTER_DATA 1
+#define PRINT_DATA 2
+
 int main() {
     data_of_array_t data_of_arr;
     int status = allocate_memory_for_array(&data_of_arr);
-    if (status != 0) {
+    if (status != SUCCESSFUL_ALLOCATION) {
         free(data_of_arr.array);
-        return 1;
+        return ALLOCATION_FAILED;
     }
 
     data_t temp_data;
@@ -20,12 +26,12 @@ int main() {
         }
 
         switch (choice) {
-            case 1:
+            case ENTER_DATA:
                 filling_structure(&temp_data);
                 push(&data_of_arr, temp_data);
                 break;
-            case 2:
-                if (data_of_arr.size == 0) {
+            case PRINT_DATA:
+                if (data_of_arr.size == INITIAL_SIZE) {
                     printf("Данных нет.\n");
                     break;
                 }

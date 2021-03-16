@@ -3,6 +3,14 @@
 #include <string.h>
 #include "utils.h"
 
+#define INITIAL_CAPACITY 1
+#define INITIAL_SIZE 0
+#define SUCCESSFUL_ALLOCATION 0
+#define ALLOCATION_FAILED 1
+#define CONTINUE 1
+#define DO_NOT_CONTINUE 2
+
+
 void print_data(const data_of_array_t* data_of_arr) {
     for (int i = 0; i < data_of_arr->size; i++) {
         printf("%d %d %s\n",
@@ -79,8 +87,8 @@ int allocate_memory_for_array(data_of_array_t* data_of_arr) {
     }
 
     data_of_arr->array = new_array;
-    data_of_arr->capacity = 1;
-    data_of_arr->size = 0;
+    data_of_arr->capacity = INITIAL_CAPACITY;
+    data_of_arr->size = INITIAL_SIZE;
 
     return 0;
 }
@@ -92,9 +100,9 @@ int asking_for_continue() {
         perror("Ошибка: ");
     }
 
-    if (answer == 1) {
+    if (answer == CONTINUE) {
         return 1;
-    } else if (answer == 2) {
+    } else if (answer == DO_NOT_CONTINUE) {
         return 0;
     } else {
         printf("Некорректный ввод.\n");
