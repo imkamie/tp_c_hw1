@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 #include "utils.h"
 
 #define INITIAL_CAPACITY 1
 #define INITIAL_SIZE 0
-#define SUCCESSFUL_ALLOCATION 0
-#define ALLOCATION_FAILED 1
 #define CONTINUE 1
 #define DO_NOT_CONTINUE 2
 
 
 void print_data(const data_of_array_t* data_of_arr) {
     for (int i = 0; i < data_of_arr->size; i++) {
-        printf("%d %d %s\n",
-               data_of_arr->array[i].code, data_of_arr->array[i].phone, data_of_arr->array[i].name);
+        print_elem_of_arr(&data_of_arr->array[i]);
     }
+}
+
+void print_elem_of_arr(const data_t* elem) {
+    printf("%d %d %s\n", elem->code, elem->phone, elem->name);
 }
 
 data_t* resize(data_of_array_t* data_of_arr)  {
@@ -83,7 +85,7 @@ int allocate_memory_for_array(data_of_array_t* data_of_arr) {
     data_t* new_array = calloc(1, sizeof(data_t));
     if (!new_array) {
         free(new_array);
-        return 1;
+        return ENOMEM;
     }
 
     data_of_arr->array = new_array;

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include "utils.h"
 
-#define SUCCESSFUL_ALLOCATION 0
-#define ALLOCATION_FAILED 1
 #define INITIAL_SIZE 0
 #define ENTER_DATA 1
 #define PRINT_DATA 2
@@ -11,9 +10,9 @@
 int main() {
     data_of_array_t data_of_arr;
     int status = allocate_memory_for_array(&data_of_arr);
-    if (status != SUCCESSFUL_ALLOCATION) {
+    if (status) {
         free(data_of_arr.array);
-        return ALLOCATION_FAILED;
+        return ENOMEM;
     }
 
     data_t temp_data;

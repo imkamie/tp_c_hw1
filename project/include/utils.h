@@ -20,6 +20,7 @@ void push(data_of_array_t* arr, data_t data);
 void sort_data(data_of_array_t* data_of_arr);
 int allocate_memory_for_array(data_of_array_t *data_of_arr);
 void print_data(const data_of_array_t * data_of_arr);
+void print_elem_of_arr(const data_t* elem);
 void filling_structure(data_t* data);
 int asking_for_continue();
 
