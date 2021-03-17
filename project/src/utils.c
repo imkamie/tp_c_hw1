@@ -8,10 +8,12 @@
 #define INITIAL_SIZE 0
 #define CONTINUE 1
 #define DO_NOT_CONTINUE 2
-
+#define REMAINDER_MIN 1
+#define REMAINDER_MAX 9
+#define DIVISOR 1000000
 
 void print_data(const data_of_array_t* data_of_arr) {
-    for (int i = 0; i < data_of_arr->size; i++) {
+    for (size_t i = 0; i < data_of_arr->size; i++) {
         print_elem_of_arr(&data_of_arr->array[i]);
     }
 }
@@ -21,7 +23,7 @@ void print_elem_of_arr(const data_t* elem) {
 }
 
 data_t* resize(data_of_array_t* data_of_arr)  {
-    int new_capacity = data_of_arr->capacity * 2;
+    size_t new_capacity = data_of_arr->capacity * 2;
 
     data_t* new_array = calloc(new_capacity, sizeof(data_t));
     if (!new_array) {
@@ -43,7 +45,7 @@ void push(data_of_array_t* data_of_arr, data_t data) {
             return;
         }
     }
-    int current_size = data_of_arr->size;
+    size_t current_size = data_of_arr->size;
     data_of_arr->array[current_size] = data;
     data_of_arr->size++;
 }
@@ -61,10 +63,10 @@ void filling_structure(data_t* data) {
             perror("Ошибка: ");
         }
 
-        if (data->phone <= 0 || data->phone / 1000000 < 1 || data->phone / 1000000 > 9) {
+        if (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN || data->phone / DIVISOR > REMAINDER_MAX) {
             printf("Некорректный ввод.\n");
         }
-    } while (data->phone <= 0 || data->phone / 1000000 < 1 || data->phone / 1000000 > 9);
+    } while (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN || data->phone / DIVISOR > REMAINDER_MAX);
 
 
     scanf("%*[^\n]");
@@ -76,7 +78,7 @@ void filling_structure(data_t* data) {
 }
 
 void sort_data(data_of_array_t* data_of_arr) {
-    for (int i = 1; i < data_of_arr->size; ++i) {
+    for (size_t i = 1; i < data_of_arr->size; ++i) {
         data_t temp_data = data_of_arr->array[i];
         int temp_code = data_of_arr->array[i].code;
         int j = i - 1;

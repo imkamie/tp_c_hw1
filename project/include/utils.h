@@ -1,6 +1,8 @@
 #ifndef PROJECT_INCLUDE_UTILS_H_
 #define PROJECT_INCLUDE_UTILS_H_
 
+#include <stddef.h>
+
 #define NAME_MAX_LENGTH 20
 
 typedef struct data {
@@ -11,8 +13,8 @@ typedef struct data {
 
 typedef struct data_of_arr {
     data_t* array;
-    int size;
-    int capacity;
+    size_t size;
+    size_t capacity;
 } data_of_array_t;
 
 data_t* resize(data_of_array_t* arr);

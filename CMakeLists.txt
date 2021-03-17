@@ -14,5 +14,6 @@ add_executable(tp_c_hw1 project/src/main.c)
 target_link_libraries(tp_c_hw1 utils)
 
 find_package(GTest REQUIRED)
-add_executable(runTests tests/run_tests.cpp tests/test_allocation.cpp tests/test_print.cpp tests/test_push.cpp tests/test_resize.cpp tests/test_sort.cpp tests/test_values.cpp)
+set(SOURCES tests/run_tests.cpp tests/test_allocation.cpp tests/test_print.cpp tests/test_push.cpp tests/test_resize.cpp tests/test_sort.cpp tests/test_values.cpp)
+add_executable(runTests ${SOURCES})
 target_link_libraries(runTests GTest::gtest utils)
