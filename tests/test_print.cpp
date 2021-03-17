@@ -11,5 +11,5 @@ TEST(TestPrint, Print) {
     int expectation = printf("%d %d %s\n",
                              data_of_arr.array->code, data_of_arr.array->phone, data_of_arr.array->name);
 
-    EXPECT_EQ(expectation, 15);
+    ASSERT_EQ(expectation, 15);
 }

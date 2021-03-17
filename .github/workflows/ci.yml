@@ -7,10 +7,6 @@ jobs:
     name: ubuntu
     runs-on: ubuntu-latest
 
-    env:
-      OS: ubuntu-latest
-      PYTHON: '3.7'
-
     steps:
       - uses: actions/checkout@v2
 

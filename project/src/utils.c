@@ -54,12 +54,18 @@ void filling_structure(data_t* data) {
         perror("Ошибка: ");
     }
 
-    printf("Введите номер из 7 цифр:\n");
-    char phone_string[8];
-    if (scanf("%7s", phone_string) != 1) {
-        perror("Ошибка: ");
-    }
-    data->phone = (int)strtol(phone_string, NULL, 10);
+    do {
+        printf("Введите номер из 7 цифр:\n");
+
+        if (scanf("%d", &data->phone) != 1) {
+            perror("Ошибка: ");
+        }
+
+        if (data->phone <= 0 || data->phone / 1000000 < 1 || data->phone / 1000000 > 9) {
+            printf("Некорректный ввод.\n");
+        }
+    } while (data->phone <= 0 || data->phone / 1000000 < 1 || data->phone / 1000000 > 9);
+
 
     scanf("%*[^\n]");
     scanf("%*c");
