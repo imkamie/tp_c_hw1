@@ -63,10 +63,12 @@ void filling_structure(data_t* data) {
             perror("Ошибка: ");
         }
 
-        if (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN || data->phone / DIVISOR > REMAINDER_MAX) {
+        if (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN ||
+            data->phone / DIVISOR > REMAINDER_MAX) {
             printf("Некорректный ввод.\n");
         }
-    } while (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN || data->phone / DIVISOR > REMAINDER_MAX);
+    } while (data->phone <= 0 || data->phone / DIVISOR < REMAINDER_MIN ||
+            data->phone / DIVISOR > REMAINDER_MAX);
 
 
     scanf("%*[^\n]");
