@@ -7,7 +7,7 @@
 #define INITIAL_CAPACITY 1
 #define INITIAL_SIZE 0
 #define CONTINUE 1
-#define DO_NOT_CONTINUE 2
+#define DO_NOT_CONTINUE 0
 #define REMAINDER_MIN 1
 #define REMAINDER_MAX 9
 #define DIVISOR 1000000
@@ -108,16 +108,16 @@ int allocate_memory_for_array(data_of_array_t* data_of_arr) {
 }
 
 int asking_for_continue() {
-    printf("Хотите продолжить? Введите 1, если да, и введите 2, если нет.\n");
+    printf("Хотите продолжить? Введите 1, если да, и введите 0, если нет.\n");
     int answer = 0;
     if (scanf("%d", &answer) != 1) {
         perror("Ошибка: ");
     }
 
     if (answer == CONTINUE) {
-        return 1;
+        return answer;
     } else if (answer == DO_NOT_CONTINUE) {
-        return 0;
+        return answer;
     } else {
         printf("Некорректный ввод.\n");
         asking_for_continue();
