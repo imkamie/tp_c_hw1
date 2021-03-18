@@ -38,16 +38,18 @@ data_t* resize(data_of_array_t* data_of_arr)  {
     return new_array;
 }
 
-void push(data_of_array_t* data_of_arr, data_t data) {
+int push(data_of_array_t* data_of_arr, data_t data) {
     if (data_of_arr->size >= data_of_arr->capacity) {
         data_of_arr->array = resize(data_of_arr);
         if (!data_of_arr->array) {
-            return;
+            return ENOMEM;
         }
     }
     size_t current_size = data_of_arr->size;
     data_of_arr->array[current_size] = data;
     data_of_arr->size++;
+
+    return 0;
 }
 
 void filling_structure(data_t* data) {

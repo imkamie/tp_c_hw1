@@ -18,7 +18,7 @@ typedef struct data_of_arr {
 } data_of_array_t;
 
 data_t* resize(data_of_array_t* arr);
-void push(data_of_array_t* arr, data_t data);
+int push(data_of_array_t* arr, data_t data);
 void sort_data(data_of_array_t* data_of_arr);
 int allocate_memory_for_array(data_of_array_t *data_of_arr);
 void print_data(const data_of_array_t * data_of_arr);
